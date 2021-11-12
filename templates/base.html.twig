@@ -25,7 +25,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">SYMFONY-WEB-APP</a>
+                    <a class="navbar-brand" href="{{ path('home') }}">SYMFONY-WEB-APP</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -46,12 +46,16 @@
                             </ul>
                         </li>
                     </ul>
-                    <form class="navbar-form navbar-left" role="search">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search">
+
+                    <form class="navbar-form navbar-center" role="search">
+                        <div class="input-group">
+                            <input type="search" class="form-control input-lg" placeholder="">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default btn-lg" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn-default">Submit</button>
                     </form>
+
                     <div class="content">
                         <i class="fas fa-sun"></i>
                         &nbsp;&nbsp;&nbsp;
@@ -61,49 +65,35 @@
                         <i class="fas fa-moon"></i>
                     </div>
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
-                            <ul id="login-dp" class="dropdown-menu">
-                                <li>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            Login via
-                                            <div class="social-buttons">
-                                                <a href="#" class="btn btn-gplus"><i class="fa fa-google-plus"></i> Google</a>
-                                                <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
-                                            </div>
-                                            or
-                                            <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
-                                                <div class="form-group">
-                                                    <label class="sr-only" for="exampleInputEmail2">Email address</label>
-                                                    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="sr-only" for="exampleInputPassword2">Password</label>
-                                                    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
-                                                    <div class="help-block text-right"><a href="">Forget the password ?</a></div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-                                                </div>
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox"> keep me logged-in
-                                                    </label>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                <a href="{{ path('user') }}" class="btn btn-primary"><b>My account</b><span class="caret"></span></a>
+                                <a href="{{ path('app_logout') }}"  class="btn btn-primary"><b>Logout</b> <span class="caret"></span></a>
+                            {% else %}
+                                <a href="{{ path('app_login') }}" class="btn btn-primary"><b>Login</b><span class="caret"></span></a>
+                                <a href="{{ path('app_register') }}" class="btn btn-primary"><b>Register</b><span class="caret"></span> </a>
+                            {% endif %}
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
     {% endblock %}
 
+
         {% block body %}{% endblock %}
+
+    <div class="__content"></div>
+
+    {% block footer %}
+
+        <footer>
+
+            <div class="container">
+                <p class="text-center"><a href="https://symfonywebapp.herokuapp.com/">SYMFONY-WEB-APP</a></p>
+            </div>
+
+        </footer>
+
+    {% endblock %}
 
     {% block javascripts %}
         <script>

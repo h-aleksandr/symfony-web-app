@@ -1,0 +1,13 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}admin{% endblock %}
+
+
+{% block body %}
+
+
+    {% for user in users %}
+        <li><a href="#">{{ user.userIdentifier}}</a></li>
+    {% endfor %}
+
+{% endblock %}
