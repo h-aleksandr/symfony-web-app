@@ -6,10 +6,8 @@
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
         {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('./assets/css/style.css') }}">
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+            <link rel="stylesheet" href="{{ asset('./assets/css/style.css') }}">
         {% endblock %}
 
     </head>
@@ -47,14 +45,14 @@
                         </li>
                     </ul>
 
-                    <form class="navbar-form navbar-center" role="search">
-                        <div class="input-group">
-                            <input type="search" class="form-control input-lg" placeholder="">
-                            <div class="input-group-btn">
-                                <button class="btn btn-default btn-lg" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                            </div>
-                        </div>
-                    </form>
+{#                    <form class="navbar-form navbar-center" role="search">#}
+{#                        <div class="input-group">#}
+{#                            <input type="search" class="form-control input-lg" placeholder="">#}
+{#                            <div class="input-group-btn">#}
+{#                                <button class="btn btn-default btn-lg" type="submit"><i class="glyphicon glyphicon-search"></i></button>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </form>#}
 
                     <div class="content">
                         <i class="fas fa-sun"></i>
@@ -65,21 +63,106 @@
                         <i class="fas fa-moon"></i>
                     </div>
                     <ul class="nav navbar-nav navbar-right">
-                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                                <a href="{{ path('user') }}" class="btn btn-primary"><b>My account</b><span class="caret"></span></a>
-                                <a href="{{ path('app_logout') }}"  class="btn btn-primary"><b>Logout</b> <span class="caret"></span></a>
-                            {% else %}
-                                <a href="{{ path('app_login') }}" class="btn btn-primary"><b>Login</b><span class="caret"></span></a>
-                                <a href="{{ path('app_register') }}" class="btn btn-primary"><b>Register</b><span class="caret"></span> </a>
-                            {% endif %}
+                          XXXXXXX
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
     {% endblock %}
 
+    {% block container %}
 
-        {% block body %}{% endblock %}
+{#        <div class="wrapper">#}
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-lg-9 col-lg-push-3">
+
+
+                        <form role="search" class="visible-xs">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="search" class="form-control input-lg" placeholder="Search">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-default btn-lg" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                        {% block body %}
+                        {% endblock %}
+
+                    </div>
+
+                    <div class="col-lg-3 col-lg-pull-9">
+                        <div class="panel panel-info">
+                            <div class="panel-body">
+                                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                    <a href="{{ path('user') }}" class="btn btn-primary"><b>My account</b><span></span></a>
+                                    <a href="{{ path('app_logout') }}"  class="btn btn-primary"><b>Logout</b> <span class="caret"></span></a>
+                                {% else %}
+                                    <a href="{{ path('app_login') }}" class="btn btn-primary"><b>Login</b><span class="caret"></span></a>
+                                    <a href="{{ path('app_register') }}" class="btn btn-primary"><b>Register</b><span class="caret"></span> </a>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="panel panel-info hidden-xs">
+                            <div class="panel-heading"><div class="sidebar-header"><h3>Search</h3></div></div>
+                            <div class="panel-body">
+                                <form role="search">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input type="search" class="form-control input-lg" placeholder="">
+                                            <div class="input-group-btn">
+                                                <button class="btn btn-default btn-lg" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+
+                        <div class="panel panel-info">
+                            <div class="panel-heading"><div class="sidebar-header"><h3>Tags</h3></div></div>
+                            <div class="panel-body">
+                                <div class="">#example #example #example #example #example</div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-info">
+                            <div class="panel-heading"><div class="sidebar-header"><h3>Top rating</h3></div></div>
+                            <div class="panel-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item list-group-warning">
+                                        <p><a href="show.html">GounreName</a></p>
+                                        <p>
+                                            <b><a href="show.html">Name</a></b>
+                                            <span class="badge">8.9</span>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="clear"></div>
+
+{#        </div>#}
+
+    {% endblock %}
+
 
     <div class="__content"></div>
 
@@ -96,6 +179,8 @@
     {% endblock %}
 
     {% block javascripts %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script>
             $(document).ready(function(){
                 $("#tooglenight").change(function() {

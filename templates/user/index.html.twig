@@ -4,8 +4,19 @@
 
 {% block body %}
     <div class="example-wrapper">
-        {% for user in users %}
-            <li>{{ user.email}} <br> {{ user.id }}</li>
+        <a href="{{ path('create_review') }}"><button class="btn btn-block btn-primary">Create new review</button></a>
+        <hr>
+        <hr>
+        {% for review in reviews %}
+            <a href="#"><h3>{{ review.title | upper}}</h3></a>
+            <hr>
+            <a href="#" class="btn btn-warning pull-right">Edit</a>
+            <span><h5><b>Author's assessment: {{ review.assessment }}</b> || <b>Rating: ?</b> || <b>Like</b></h5></span>
+            <span><b>Tags: </b></span>
+            <hr>
+            <hr>
+
+            <div class="margin-8"></div>
         {% endfor %}
     </div>
 {% endblock %}

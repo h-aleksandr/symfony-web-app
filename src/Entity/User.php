@@ -1,8 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -42,10 +46,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $isVerified = false;
 
+
     /**
-     * @ORM\OneToOne(targetEntity=Review::class, mappedBy="userId", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity=Review::class, mappedBy="user")
      */
     private $review;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $username;
+
+    public function __construct()
+    {
+        $this->review = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -161,6 +176,43 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         $this->review = $review;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Review[]
+     */
+    public function getReviews(): Collection
+    {
+        return $this->reviews;
+    }
+
+    public function addReview(Review $review): self
+    {
+        if (!$this->review->contains($review)) {
+            $this->review[] = $review;
+            $review->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReview(Review $review): self
+    {
+        if ($this->reviews->removeElement($review)) {
+            // set the owning side to null (unless already changed)
+            if ($review->getUser() === $this) {
+                $review->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function setUsername(string $username): self
+    {
+        $this->username = $username;
 
         return $this;
     }
