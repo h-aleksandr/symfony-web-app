@@ -1,48 +1,94 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Entity\Review;
-use App\Entity\User;
 use App\Form\ReviewType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\ReviewRepository;
 
 class ReviewController extends AbstractController
 {
-    #[Route('/review/create', name: 'create_review')]
-    public function index(Request $request): Response
+    public function __construct(
+        private EntityManagerInterface $em,
+        private ReviewRepository $reviewRepository,
+    ) {
+    }
+
+    #[Route('review/', name: 'review_index')]
+    public function index(): Response
+    {
+        $reviews = $this->getDoctrine()->getRepository(Review::class)->findBy([], ['create_at' => 'DESC']);
+        return $this->render('review/index.html.twig', [
+            'title' => 'Reviews',
+            'reviews' => $reviews,
+            'user' => $this->getUser(),
+        ]);
+    }
+
+    #[Route('review/{id}', name: 'review')]
+    public function showReview($id): Response
+    {
+        $review = $this->reviewRepository->find($id);
+        $comments = $review->getComments();
+        return $this->render('review/show.html.twig', [
+            'review' => $review,
+            'comments' => $comments,
+        ]);
+    }
+
+    #[Route('user/review/create', name: 'review_create', methods: ['GET','POST'])]
+    public function createReview(Request $request,): Response
     {
         $review = new Review();
         $form = $this->createForm(ReviewType::class, $review);
         $form->handleRequest($request);
-
-//        $user = new User();
-//        $userId = $user->getId();
-
         if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
             $review
-                ->setTitle($review->getTitle())
-                ->setText($review->getText())
-                ->setAssessment($review->getAssessment())
-                ->setCreatedAt(new \DateTime())
-//                ->setUserId($review->getUserId())
-//                ->setUser($userId)
+                ->setUser($this->getUser())
+                ->setCreateAt(new \DateTimeImmutable())
             ;
-
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($review);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('user');
+            $this->em->persist($review);
+            $this->em->flush();
+            return $this->redirectToRoute('user_reviews');
         }
-
-
-        return $this->render('review/index.html.twig', [
+        return $this->render('user/review/form.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+
+    #[Route('user/update/{id}', name: 'review_update')]
+    public function updateReview(Request $request, $id,): Response
+    {
+        $review = $this->reviewRepository->find($id);
+        $form = $this->createForm(ReviewType::class, $review);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $review->setUpdateAt(new \DateTimeImmutable);
+            $this->em->flush();
+
+            return $this->redirectToRoute('show_user_review', ['id' => $review->getId()]);
+        }
+        return $this->render('user/review/edit_form.html.twig', [
+            'form' => $form->createView(),
+            'review' => $review,
+        ]);
+    }
+
+    #[Route('user/delete/{id}', name: 'review_delete')]
+    public function deleteReview($id): Response
+    {
+        $review = $this->reviewRepository->find($id);
+        $this->em->remove($review);
+        $this->em->flush();
+
+            return $this->redirectToRoute('user_reviews', );
     }
 }

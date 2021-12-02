@@ -3,12 +3,16 @@ security:
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
-        App\Entity\User:
+        Symfony\Component\Security\Core\User\InMemoryUser:
             algorithm: auto
 
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
         # used to reload user from session & other features (e.g. switch_user)
+#        backend_users:
+#            memory:
+#                users:
+#                    admin: { password: '$2y$13$Jh9DYdDf6MobcfXSNHenxOOUYk2H3s9CIi2lvCOJ4tTc2vcm2rODu', roles: [ 'ROLE_ADMIN' ] }
         app_user_provider:
             entity:
                 class: App\Entity\User
@@ -18,13 +22,23 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
+#            anonymous: true
             lazy: true
             provider: app_user_provider
+            guard:
+                authenticators:
+                    - App\Security\FacebookAuthenticator
+                    - App\Security\GoogleAuthenticator
             custom_authenticator: App\Security\UserAuthenticator
+            entry_point: App\Security\UserAuthenticator
             logout:
                 path: app_logout
                 # where to redirect after logout
                 # target: app_any_route
+
+#            login_throttling:
+#                max_attempts: 3
+#                interval: '5 minutes'
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -35,8 +49,9 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
+#         - { path: ^/, roles: PUBLIC_ACCESS }
          - { path: ^/admin, roles: ROLE_ADMIN }
-         - { path: ^/profile, roles: ROLE_USER }
+         - { path: ^/user, roles: ROLE_USER }
 
     role_hierarchy:
         ROLE_ADMIN: ROLE_USER

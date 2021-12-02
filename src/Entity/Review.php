@@ -8,6 +8,8 @@ use App\Repository\ReviewRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use JetBrains\PhpStorm\Pure;
+use phpDocumentor\Reflection\Types\String_;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -15,20 +17,20 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Review
 {
-    private const PUBLISHED = true;
-    private const DRAFT = false;
+    public const PUBLISHED = true;
+    public const DRAFT = false;
 
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private int $id;
+    private ?int $id = null;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private string $title;
+    private ?string $title = null;
 
     /**
      * @ORM\Column(type="text")
@@ -37,52 +39,60 @@ class Review
 
     /**
      * @ORM\Column(type="smallint")
-     * @Assert\Range(min="1", max="10")
+     * @Assert\Range(min = 1, max = 10)
      */
     private int $assessment;
 
     /**
      * @ORM\Column(type="datetime_immutable")
      */
-    private \DateTime $create_at;
+    private \DateTimeImmutable $create_at;
 
     /**
      * @ORM\Column(type="datetime_immutable")
      */
-    private \DateTime $update_at;
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private bool $is_published;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private string $slug;
+    private \DateTimeImmutable $update_at;
 
     /**
      * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="review")
      */
-    private Comment $comments;
+    private $comments;
 
-    public function __construct(Comment $comments)
+    /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="reviews")
+     */
+    private $category;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="user")
+     * @ORM\JoinColumn(referencedColumnName="id")
+     */
+    private User $user;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Tag::class, mappedBy="review")
+     */
+    private $tags;
+
+    public function __construct()
     {
         $this->comments = new ArrayCollection();
+        $this->create_at = new \DateTimeImmutable();
+        $this->update_at = new \DateTimeImmutable();
+        $this->tags = new ArrayCollection();
     }
 
-
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getTitle(): string
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
-    public function setTitle(string $title): self
+    public function setTitle(?string $title): self
     {
         $this->title = $title;
 
@@ -113,14 +123,14 @@ class Review
         return $this;
     }
 
-    public function getSlug(): string
+    public function getUser()
     {
-        return $this->slug;
+        return $this->user;
     }
 
-    public function setSlug(string $slug): self
+    public function setUser(User $user): self
     {
-        $this->slug = $slug;
+        $this->user = $user;
 
         return $this;
     }
@@ -149,31 +159,16 @@ class Review
         return $this;
     }
 
-    public function getIsPublished(): bool
-    {
-        return $this->is_published;
-    }
-
-    public function setIsPublished(): self
-    {
-        $this->is_published = self::PUBLISHED;
-        return $this;
-    }
-
-    public function setIsDraft(): self{
-        $this->is_published = self::DRAFT;
-        return $this;
-    }
-
     /**
      * @return Collection|Comment[]
      */
-    public function getComments(): Collection
+    public function getComments(): ?Collection
     {
         return $this->comments;
     }
 
-    public function addComment(Comment $comment): self
+
+    public function addComment(?Comment $comment): self
     {
         if (!$this->comments->contains($comment)) {
             $this->comments[] = $comment;
@@ -183,13 +178,52 @@ class Review
         return $this;
     }
 
-    public function removeComment(Comment $comment): self
+    public function removeComment(?Comment $comment): self
     {
         if ($this->comments->removeElement($comment)) {
             // set the owning side to null (unless already changed)
             if ($comment->getReview() === $this) {
                 $comment->setReview(null);
             }
+        }
+
+        return $this;
+    }
+
+       public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getTags(): Collection
+    {
+        return $this->tags;
+    }
+
+    public function addTag(Tag $tag): self
+    {
+        if (!$this->tags->contains($tag)) {
+            $this->tags[] = $tag;
+            $tag->addName($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTag(Tag $tag): self
+    {
+        if ($this->tags->removeElement($tag)) {
+            $tag->removeName($this);
         }
 
         return $this;

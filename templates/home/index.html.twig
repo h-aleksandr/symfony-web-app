@@ -1,25 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ title }}{% endblock %}
+{% block title %}Welcome{% endblock %}
 
 {% block body %}
-    <div class="form-control-plaintext text-center">
-        <h1><b>{{ title | upper }}</b></h1>
-    </div>
-    <hr>
-    <hr>
-       <div class="margin-8"></div>
-
-    {% for review in reviews %}
-        <a href="#"><h3>{{ review.title | upper}}</h3></a>
-        <hr>
-        <a href="#" class="btn btn-warning pull-right">More</a>
-        <span><h5><b>Author's assessment: {{ review.assessment }}</b> || <b>Rating: ?</b> || <b>Like</b></h5></span>
-        <span><b>Tags: </b></span>
-        <hr>
-        <hr>
-
-        <div class="margin-8"></div>
-    {% endfor %}
-
+    <h1><b>WELCOME TO MY SYMFONY-WEB-APP</b></h1>
 {% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My comments{% endblock %}
+
+{% block body %}
+    <h1 CLASS="text-center">MY COMMENTS</h1><br><hr><hr>
+
+        {% for comment in comments %}
+            <p>
+                <small>Comment for review: </small><a href="{{ path('review', {'id': comment.review.id}) }}">{{ comment.review.title}}</a> <small>from author: </small> {{ comment.review.user.username }}
+            <p>
+                <small>
+                    Date: {{ comment.createAt |format_datetime('medium', 'short') }}
+                </small>
+            </p>
+
+            <p>{{ comment.text}}</p>
+            <a href="{{ path('comment_edit', { id: comment.id }) }}" class="btn btn-warning">Edit</a>
+            </p><hr><hr><br>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+
+
+{#    <a href="{{ path('comment_new') }}">Create new</a>#}
+{% endblock %}

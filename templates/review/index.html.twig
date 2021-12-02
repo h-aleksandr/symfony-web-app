@@ -1,29 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ReviewController!{% endblock %}
+{% block title %}{{ title }}{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <div class="form-control-plaintext text-center">
+        <h1><b>{{ title | upper }}</b></h1>
+    </div>
 
-<div class="example-wrapper">
+    <div class="margin-8"></div>
 
+    {% for review in reviews %}
+        <hr>
+        <h3>{{ review.title | upper}}</h3>
+        {#        <a href="{{ 'review' }}/{{ review.id }}"></a>#}
+        <hr>
+        <a href="{{ path('review', {id: review.id}) }}" class="btn btn-warning pull-right">More</a>
+        <span><h5><b>Author's assessment: {{ review.assessment }}</b> || <b>Rating: ?</b> || <b>Like</b></h5></span>
+        <span><b>Tags: </b></span>
+        <hr>
+        <hr>
+        <br>
+        <br>
 
-    {{ form_start(form, {'action':path('create_review'), 'method':'POST',
-    'attr':{'class':'reviw-form', 'novalidate':'novalidate'} }) }}
-        {{ form_errors(form) }}
+        <div class="margin-8"></div>
+    {% else %}
+        <tr>
+            <td colspan="6">There are not records yet.</td>
+        </tr>
+    {% endfor %}
 
-        {{ form_row(form.title) }}
-        {{ form_row(form.text)}}
-        {{ form_row(form.assessment) }}
-
-
-        <button type="submit" class="btn">Save</button>
-
-{#    {{ form_widget(form.save, {attr:{class:'btn'}}) }}#}
-
-    {{ form_end(form) }}
-</div>
 {% endblock %}

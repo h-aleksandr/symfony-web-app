@@ -24,11 +24,10 @@ class UserAuthenticator extends AbstractLoginFormAuthenticator
 
     public const LOGIN_ROUTE = 'app_login';
 
-    private UrlGeneratorInterface $urlGenerator;
-
-    public function __construct(UrlGeneratorInterface $urlGenerator)
+      public function __construct(
+        private UrlGeneratorInterface $urlGenerator,)
+//        private Security $security)
     {
-        $this->urlGenerator = $urlGenerator;
     }
 
     public function authenticate(Request $request): PassportInterface
@@ -61,4 +60,16 @@ class UserAuthenticator extends AbstractLoginFormAuthenticator
     {
         return $this->urlGenerator->generate(self::LOGIN_ROUTE);
     }
+
+//    public function supports(Request $request): bool
+//    {
+//                 // if there is already an authenticated user (likely due to the session)
+//                 // then return false and skip authentication: there is no need.
+//                 if ($this->security->getUser()) {
+//                     return false;
+//         }
+//
+//         // the user is not logged in, so the authenticator should continue
+//         return true;
+//      }
 }

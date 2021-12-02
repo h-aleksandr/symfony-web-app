@@ -5,9 +5,12 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Repository\CommentRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use JetBrains\PhpStorm\Pure;
 
 /**
+ * @ORM\Table(name="comment")
  * @ORM\Entity(repositoryClass=CommentRepository::class)
  */
 class Comment
@@ -31,23 +34,44 @@ class Comment
      * @ORM\ManyToOne(targetEntity=Review::class, inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
      */
-    private Review $review;
+    private $review;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="comments")
+     * @ORM\JoinColumn(referencedColumnName="id")
+     */
+    private $user;
 
     /**
      * @ORM\Column(type="datetime_immutable")
      */
-    private \DateTime $create_at;
+    private \DateTimeImmutable $create_at;
 
     /**
      * @ORM\Column(type="datetime_immutable")
      */
-    private \DateTime $update_at;
+    private \DateTimeImmutable $update_at;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private bool $is_published;
+//    /**
+//     * @ORM\Column(type="boolean")
+//     */
+//    private bool $is_published;
 
+    public function __construct()
+    {
+        $this->create_at = new \DateTimeImmutable();
+        $this->update_at = new \DateTimeImmutable();
+    }
+
+    #[Pure] public static function create(string $text, User $user, Review $review): Comment
+    {
+        $comment = new self();
+        $comment->text = $text;
+        $comment->review = $review;
+        $comment->user = $user;
+
+        return $comment;
+    }
 
     public function getId(): int
     {
@@ -66,16 +90,26 @@ class Comment
         return $this;
     }
 
-    public function getReview(): Review
+    public function getReview()
     {
         return $this->review;
     }
 
-    public function setReview(Review $review): self
+    public function setReview($review): self
     {
         $this->review = $review;
 
         return $this;
+    }
+
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    public function setUser($user)
+    {
+        $this->user = $user;
     }
 
     public function getCreateAt(): \DateTimeImmutable

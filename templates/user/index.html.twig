@@ -1,22 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello UserController!{% endblock %}
+{% block title %}{{ app.user.userIdentifier }}{% endblock %}
 
 {% block body %}
-    <div class="example-wrapper">
-        <a href="{{ path('create_review') }}"><button class="btn btn-block btn-primary">Create new review</button></a>
-        <hr>
-        <hr>
-        {% for review in reviews %}
-            <a href="#"><h3>{{ review.title | upper}}</h3></a>
-            <hr>
-            <a href="#" class="btn btn-warning pull-right">Edit</a>
-            <span><h5><b>Author's assessment: {{ review.assessment }}</b> || <b>Rating: ?</b> || <b>Like</b></h5></span>
-            <span><b>Tags: </b></span>
-            <hr>
-            <hr>
-
-            <div class="margin-8"></div>
-        {% endfor %}
-    </div>
+    <a href="{{ path('user_reviews') }}" class="btn btn-block btn-success">My reviews</a>
+        <div class="margin-8"></div>
+    <div class="margin-8"></div>
+    <a href="{{ path('comment_index') }}" class="btn btn-block btn-success">My comments</a>
+        <div class="margin-8"></div>
+    <a href="{{ path('review_create') }}" class="btn btn btn-primary">Create a new review</a>
 {% endblock %}

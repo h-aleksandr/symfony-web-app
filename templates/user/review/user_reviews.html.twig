@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My reviews{% endblock %}
+
+{% block body %}
+    <a href="{{ path('review_create') }}" class="btn btn-block btn-primary">Create a new review</a>
+    <div class="form-control-plaintext text-center">
+        <h1><b>MY REVIEWS</b></h1>
+    </div>
+
+    <div class="margin-8"></div>
+
+    {% for review in reviews %}
+        <hr>
+        <h3>{{ review.title | upper}}</h3>
+        <hr>
+        <a href="{{ path('show_user_review', {id: review.id}) }}" class="btn btn-warning pull-right">More</a>
+        <span><h5><b>Author's assessment: {{ review.assessment }}</b> || <b>Rating: ?</b> || <b>Like</b></h5></span>
+        <span><b>Tags: </b></span>
+        <hr>
+        <hr>
+        <br>
+        <br>
+
+        <div class="margin-8"></div>
+    {% else %}
+        <tr>
+            <td colspan="6">You have not records yet.</td>
+        </tr>
+    {% endfor %}
+
+{% endblock %}

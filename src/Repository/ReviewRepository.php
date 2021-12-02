@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Repository;
 
 use App\Entity\Review;
+use Symfony\Bridge\Doctrine\Security;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -20,6 +21,21 @@ class ReviewRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Review::class);
     }
+
+//    /**
+//     * @return Review Returns an array of Review objects
+//     */
+//    public function showUserReviews(): Review
+//    {
+//        return $this->createQueryBuilder('r')
+//            ->where('r.user = :user_id')
+//            ->setParameter('user_id', $this->getUser())
+//            ->orderBy('r.create_at', 'DESC')
+//            ->getQuery()
+//            ->getResult()
+//            ;
+//    }
+
 
     // /**
     //  * @return Review[] Returns an array of Review objects

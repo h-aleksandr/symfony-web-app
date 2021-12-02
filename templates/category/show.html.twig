@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ category.name }}{% endblock %}
+
+{% block body %}
+    <a href="{{ path('categories') }}"><<< back to list</a>
+    <div class="form-control-plaintext text-center">
+        <h1><b>{{category.name | upper }}</b></h1>
+    </div>
+    <hr>
+    <p>{{ category.description }}</p>
+
+
+{% endblock %}

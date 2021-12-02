@@ -7,6 +7,7 @@ namespace App\Controller;
 use App\Entity\Comment;
 use App\Entity\Review;
 use App\Entity\User;
+use App\Repository\ReviewRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,43 +16,40 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class UserController extends AbstractController
 {
+    public function __construct(
+        private ReviewRepository $reviewRepository,
+    ) {
+    }
+
     #[Route('/user', name: 'user')]
 
-    public function new(): Response
+    public function index(): Response
     {
-//        $users = $this->getDoctrine()->getRepository(User::class)->findAll();
-        $reviews = $this->getDoctrine()->getRepository(Review::class)->findAll();
-
-//        $review = new Review();
-//        $comment = new Comment();
-//        $comment->setText('akljf;lja;fja;fja;jf;j');
-//        $review->addComment($comment);
-//
-//        $this->em->persist($review);
-//        $this->em->persist($comment);
-//        $this->em->flush();
-
-        return $this->render('user/index.html.twig', [
-//            'users' => $users,
-            'reviews' => $reviews,
-
-        ]);
+        return $this->render('user/index.html.twig',);
 
     }
 
-    #[Route('/user{id}', name: 'userId')]
-    public function index(int $id): Response
+    #[Route('/user/reviews', name: 'user_reviews')]
+
+    public function showReviews(): Response
     {
-        $review = $this->em->find(Review::class, 1);
+        $reviews = $this->reviewRepository->createQueryBuilder('r')
+            ->where('r.user = :user_id')
+            ->setParameter('user_id', $this->getUser())
+            ->orderBy('r.create_at', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+        return $this->render('user/review/user_reviews.html.twig', [
+            'reviews' => $reviews,
+        ]);
+    }
 
-        if (!$comment) {
-            throw $this->NotFoundHttpException('aljfldjf;alj;f');
-        }
-        foreach ($comment->getComments() as $comment) {
-            dump($comment);
-        }
-
-        return $this->render('user/index.html.twig', [
+    #[Route('user/review/{id}', name: 'show_user_review')]
+    public function showUserReview($id): Response
+    {
+        $review = $this->reviewRepository->find($id);
+        return $this->render('user/review/show_user_review.html.twig', [
             'review' => $review,
         ]);
     }
