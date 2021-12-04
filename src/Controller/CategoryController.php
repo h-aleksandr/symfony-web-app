@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[Route('/{_locale}/category', requirements: ["_locale" => "en|ru"])]
 class CategoryController extends AbstractController
 {
     public function __construct(
@@ -17,7 +18,7 @@ class CategoryController extends AbstractController
     ) {
     }
 
-    #[Route('/categories', name: 'categories')]
+    #[Route('/', name: 'categories')]
     public function index(): Response
     {
         $categories = $this->categoryRepository->findAll();
@@ -26,7 +27,7 @@ class CategoryController extends AbstractController
         ]);
     }
 
-    #[Route('/category/{id}', name: 'category')]
+    #[Route('/{id}', name: 'category')]
     public function showCategory($id): Response
     {
         $category = $this->categoryRepository->find($id);

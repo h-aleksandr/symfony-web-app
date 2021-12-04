@@ -1,0 +1,12 @@
+symfony:
+  is:
+    # id is symfony.is.great
+    great: Symfony is great
+    # id is symfony.is.amazing
+    amazing: Symfony is amazing
+  has:
+    # id is symfony.has.bundles
+    bundles: Symfony has bundles
+user:
+  # id is user.login
+  login: Login

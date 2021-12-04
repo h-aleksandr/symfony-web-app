@@ -164,6 +164,7 @@
       <path value="$PROJECT_DIR$/vendor/league/oauth2-github" />
       <path value="$PROJECT_DIR$/vendor/league/oauth2-facebook" />
       <path value="$PROJECT_DIR$/vendor/league/oauth2-linkedin" />
+      <path value="$PROJECT_DIR$/vendor/symfony/loco-translation-provider" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />

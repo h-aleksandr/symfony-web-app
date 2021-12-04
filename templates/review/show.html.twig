@@ -14,7 +14,7 @@
     <hr>
     <p>{{ review.text }}</p><hr>
 
-    <p>{{ review.createAt |format_datetime('medium', 'short') }}</p><hr>
+    <p><small>Date: {{ review.createAt |format_datetime('medium', 'short') }}</small></p><hr>
 
     <p>Category: <b>{{ review.category.name  }}</b></p><hr>
     <h5>Author's assessment: <b>{{ review.assessment }}</b></h5>
@@ -24,26 +24,26 @@
     <hr><hr><hr>
     <br>
 
-    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-    <a href="{{ path('comment_new', {id: review.id}) }}" class="align-items-center">Create new comment</a><hr>
-    {% endif %}
-
-        {% for comment in comments %}
-            <p>
+    {% for comment in comments %}
+        <p>
             <small>Comment from: </small>{{ comment.user.username }}
-            <p>
-                <small>
-                    Date: {{ comment.createAt |format_datetime('medium', 'short') }}
-                </small>
-            </p>
-            <p>{{ comment.text}}</p>
-            </p><hr><hr><br>
+        <p>
+            <small>
+                Date: {{ comment.createAt |format_datetime('medium', 'short') }}
+            </small>
+        </p>
+        <p>{{ comment.text}}</p>
+        </p><hr><hr>
 
     {% else %}
         <div>No comments have been posted yet for this review.</div>
     {% endfor %}
     <br>
-    <hr>
+
+    {% if is_granted('ROLE_USER') %}
+{#    <a href="{{ path('comment_new', {id: review.id}) }}" class="align-items-center">Create new comment</a><hr>#}
+        {{ render(path('comment_new', {id: review.id})) }}
+    {% endif %}
 {% endblock %}
 
 

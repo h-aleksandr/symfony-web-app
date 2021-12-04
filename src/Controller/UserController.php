@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[Route('/{_locale}/user', requirements: ["_locale" => "en|ru"])]
 class UserController extends AbstractController
 {
     public function __construct(
@@ -21,7 +22,7 @@ class UserController extends AbstractController
     ) {
     }
 
-    #[Route('/user', name: 'user')]
+    #[Route('/', name: 'user')]
 
     public function index(): Response
     {
@@ -29,7 +30,7 @@ class UserController extends AbstractController
 
     }
 
-    #[Route('/user/reviews', name: 'user_reviews')]
+    #[Route('/reviews', name: 'user_reviews')]
 
     public function showReviews(): Response
     {
@@ -45,7 +46,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('user/review/{id}', name: 'show_user_review')]
+    #[Route('/review/{id}', name: 'show_user_review')]
     public function showUserReview($id): Response
     {
         $review = $this->reviewRepository->find($id);

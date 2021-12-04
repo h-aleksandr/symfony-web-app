@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/user/comment')]
+#[Route('/{_locale}/user/comment', requirements: ["_locale" => "en|ru"])]
 class CommentController extends AbstractController
 {
     public function __construct(

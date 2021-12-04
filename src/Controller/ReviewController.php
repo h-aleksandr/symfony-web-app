@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ReviewRepository;
 
+#[Route('/{_locale}/review', requirements: ["_locale" => "en|ru"])]
 class ReviewController extends AbstractController
 {
     public function __construct(
@@ -21,7 +22,7 @@ class ReviewController extends AbstractController
     ) {
     }
 
-    #[Route('review/', name: 'review_index')]
+    #[Route('/', name: 'review_index')]
     public function index(): Response
     {
         $reviews = $this->getDoctrine()->getRepository(Review::class)->findBy([], ['create_at' => 'DESC']);
@@ -32,7 +33,7 @@ class ReviewController extends AbstractController
         ]);
     }
 
-    #[Route('review/{id}', name: 'review')]
+    #[Route('/{id}', name: 'review')]
     public function showReview($id): Response
     {
         $review = $this->reviewRepository->find($id);
@@ -43,7 +44,7 @@ class ReviewController extends AbstractController
         ]);
     }
 
-    #[Route('user/review/create', name: 'review_create', methods: ['GET','POST'])]
+    #[Route('/user/create', name: 'review_create', methods: ['GET','POST'])]
     public function createReview(Request $request,): Response
     {
         $review = new Review();
@@ -63,7 +64,7 @@ class ReviewController extends AbstractController
         ]);
     }
 
-    #[Route('user/update/{id}', name: 'review_update')]
+    #[Route('/user/update/{id}', name: 'review_update')]
     public function updateReview(Request $request, $id,): Response
     {
         $review = $this->reviewRepository->find($id);
@@ -82,7 +83,7 @@ class ReviewController extends AbstractController
         ]);
     }
 
-    #[Route('user/delete/{id}', name: 'review_delete')]
+    #[Route('/user/delete/{id}', name: 'review_delete')]
     public function deleteReview($id): Response
     {
         $review = $this->reviewRepository->find($id);

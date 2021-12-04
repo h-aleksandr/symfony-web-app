@@ -1,9 +1,10 @@
-{% extends 'base.html.twig' %}
+{#{% extends 'base.html.twig' %}#}
 
-{% block title %} new comment{% endblock %}
+{#{% block title %} Create new comment{% endblock %}#}
 
 {% block body %}
-    <a href="{{ path('review', {'id': review.id }) }}"><<< back to review</a>
+{#    <a href="{{ path('review', {'id': review.id }) }}"><<< back to review</a>#}
+
     {{ form_errors(form) }}
     {{ form(form) }}
 

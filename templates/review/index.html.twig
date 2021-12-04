@@ -11,16 +11,15 @@
 
     {% for review in reviews %}
         <hr>
-        <h3>{{ review.title | upper}}</h3>
+        <h3><b>{{ review.title | upper}}</b></h3>
+        <p>Author: {{ review.user.username }}</p>
+        <p><small>Date: {{ review.createAt |format_datetime('medium', 'short') }}</small></p>
         {#        <a href="{{ 'review' }}/{{ review.id }}"></a>#}
         <hr>
-        <a href="{{ path('review', {id: review.id}) }}" class="btn btn-warning pull-right">More</a>
         <span><h5><b>Author's assessment: {{ review.assessment }}</b> || <b>Rating: ?</b> || <b>Like</b></h5></span>
         <span><b>Tags: </b></span>
-        <hr>
-        <hr>
-        <br>
-        <br>
+        <a href="{{ path('review', {id: review.id}) }}" class="btn btn-warning pull-right">More</a>
+        <br><br><hr><hr><br><br>
 
         <div class="margin-8"></div>
     {% else %}
