@@ -34,6 +34,6 @@ final class Version20211123112705 extends AbstractMigration
         $this->addSql('DROP TABLE `admin`');
         $this->addSql('DROP TABLE comment');
         $this->addSql('DROP TABLE review');
-        $this->addSql('DROP TABLE `users`');
+        $this->addSql('DROP TABLE `user`');
     }
 }
