@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Table(name="`category`")
+ * @ORM\Table(name='category')
  * @ORM\Entity(repositoryClass=CategoryRepository::class)
  */
 class Category

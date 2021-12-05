@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 use JetBrains\PhpStorm\Pure;
 
 /**
- * @ORM\Table(name="`comment`")
+ * @ORM\Table(name='comment')
  * @ORM\Entity(repositoryClass=CommentRepository::class)
  */
 class Comment
