@@ -13,7 +13,7 @@ use phpDocumentor\Reflection\Types\String_;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Table(name="`review`")
+ * @ORM\Table(name=`review`)
  * @ORM\Entity(repositoryClass=ReviewRepository::class)
  */
 class Review
