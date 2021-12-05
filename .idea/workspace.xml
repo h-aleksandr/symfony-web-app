@@ -4,16 +4,6 @@
     <list default="true" id="3d4bf79a-4acd-42c0-8ce6-19df74d009f5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/migrations/Version20211111202620.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20211111202620.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20211112125733.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20211112125733.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20211123112705.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20211123112705.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20211123121835.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20211123121835.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20211123125719.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20211123125719.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20211123125907.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20211123125907.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20211126094621.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20211126094621.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Comment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Review.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Review.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Tag.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Tag.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -292,7 +282,7 @@
       <workItem from="1638520833500" duration="11212000" />
       <workItem from="1638640055032" duration="6782000" />
       <workItem from="1638646885578" duration="1353000" />
-      <workItem from="1638707922911" duration="3983000" />
+      <workItem from="1638707922911" duration="5041000" />
     </task>
     <servers />
   </component>
