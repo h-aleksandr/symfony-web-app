@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 use JetBrains\PhpStorm\Pure;
 
 /**
- * @ORM\Table(name=`tag`)
+ * @ORM\Table(name="`tag`")
  * @ORM\Entity(repositoryClass=TagRepository::class)
  */
 class Tag
