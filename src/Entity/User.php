@@ -24,7 +24,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private int $id;
+    private int $user_pkey;
 
     /**
      * @ORM\Column(type="string", length=180)
@@ -71,7 +71,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getId(): int
     {
-        return $this->id;
+        return $this->user_pkey;
     }
 
     public function getEmail(): ?string
