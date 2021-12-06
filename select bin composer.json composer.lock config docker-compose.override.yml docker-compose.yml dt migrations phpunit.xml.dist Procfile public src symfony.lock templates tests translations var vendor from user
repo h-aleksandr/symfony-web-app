@@ -1,0 +1,15 @@
+                                  Table "public.user"
+   Column    |          Type          | Collation | Nullable |         Default         
+-------------+------------------------+-----------+----------+-------------------------
+ id          | integer                |           | not null | 
+ email       | character varying(180) |           | not null | 
+ roles       | json                   |           | not null | 
+ password    | character varying(255) |           |          | NULL::character varying
+ is_verified | boolean                |           | not null | 
+ username    | character varying(255) |           | not null | 
+Indexes:
+    "user_pkey" PRIMARY KEY, btree (id)
+Referenced by:
+    TABLE "review" CONSTRAINT "fk_794381c6a76ed395" FOREIGN KEY (user_id) REFERENCES "user"(id)
+    TABLE "comment" CONSTRAINT "fk_9474526ca76ed395" FOREIGN KEY (user_id) REFERENCES "user"(id)
+
