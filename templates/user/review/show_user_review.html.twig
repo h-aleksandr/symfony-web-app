@@ -1,29 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{#{% block title %}{{ review.title }}{% endblock %}#}
+{% block title %}{{ review.title }}{% endblock %}
 
 {% block body %}
-    <a href="{{ path('user_reviews') }}"> <<< back to list</a>
+    <a href="{{ path('user_reviews') }}"> <<< {{ 'user.review.show.user.review.back.to.list' | trans }}</a>
     <div class="form-control-plaintext text-center">
         <h1><b>{{review.title | upper }}</b></h1>
     </div>
     <hr>
     <div>
-        <p>Author: <b>{{ review.user.username}}</b></p>
+        <p>{{ 'user.review.show.user.review.author' | trans }}: <b>{{ review.user.username}}</b></p>
     </div>
     <hr>
     <p>{{ review.text }}</p>
     <hr>
         <p>{{ review.createAt |format_datetime('medium', 'short') }}</p>
         <hr>
-    <p>Category: <b>{{ review.category.name  }}</b></p>
+    <p>{{ 'user.review.show.user.review.category' | trans }}: <b>{{ review.category.name  }}</b></p>
     <hr>
-        <h5>Author's assessment: <b>{{ review.assessment }}</b></h5>
-        <p>Rating: <b>?</b></p>
-        <p>Like<b>?</b></p>
+        <h5>{{ 'user.review.show.user.review.author.assessment' | trans }}: <b>{{ review.assessment }}</b></h5>
+        <p>{{ 'user.review.show.user.review.rating' | trans }}: <b>?</b></p>
+        <p>{{ 'user.review.show.user.review.likes' | trans }}:<b>?</b></p>
         <hr>
-        <span>Tags: <b>?</b></span>
+        <span>{{ 'user.review.show.user.review.tags' | trans }}: <b>?</b></span>
         <hr>
-        <a href="{{ path('review_update', { id: review.id }) }}" class="btn btn-block btn-warning">Edit</a>
+        <a href="{{ path('review_update', { id: review.id }) }}" class="btn btn-block btn-warning">{{ 'user.review.show.user.review.edit' | trans }}</a>
 
 {% endblock %}

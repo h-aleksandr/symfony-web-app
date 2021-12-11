@@ -3,7 +3,7 @@
 {% block title %} Create review {% endblock %}
 
 {% block body %}
-
+    <a href="{{ path('user_reviews') }}"><<< {{ 'user.review.form.back.to.list' | trans }}</a><hr><br><br>
     {{ form(form) }}
     {{ form_errors(form) }}
 

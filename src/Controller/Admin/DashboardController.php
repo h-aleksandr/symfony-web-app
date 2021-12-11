@@ -39,7 +39,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Categories', 'fas fa-map-marker-alt', Category::class);
         yield MenuItem::linkToCrud('Tags', 'fas fa-map-marker-tags', Tag::class);
 //        yield MenuItem::linkToCrud('Comments', 'fas fa-comments', Comment::class);
-//        yield MenuItem::linkToCrud('Reviews', 'fas fa-comments', Review::class);
+        yield MenuItem::linkToCrud('Reviews', 'fas fa-comments', Review::class);
         yield MenuItem::linkToCrud('Users', 'fas fa-users', User::class);
     }
 }

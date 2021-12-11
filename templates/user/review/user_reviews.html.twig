@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}My reviews{% endblock %}
+{% block title %}{{ 'user.review.user_reviews.title' | trans}}{% endblock %}
 
 {% block body %}
-    <a href="{{ path('review_create') }}" class="btn btn-block btn-primary">Create a new review</a>
+    <a href="{{ path('review_create') }}" class="btn btn-block btn-primary">{{ 'user.review.user_reviews.create.new.review' | trans}}</a>
     <div class="form-control-plaintext text-center">
-        <h1><b>MY REVIEWS</b></h1>
+        <h1><b>{{ 'user.review.user_reviews.header' | trans}}</b></h1>
     </div>
 
     <div class="margin-8"></div>
@@ -14,9 +14,9 @@
         <hr>
         <h3>{{ review.title | upper}}</h3>
         <hr>
-        <a href="{{ path('show_user_review', {id: review.id}) }}" class="btn btn-warning pull-right">More</a>
-        <span><h5><b>Author's assessment: {{ review.assessment }}</b> || <b>Rating: ?</b> || <b>Like</b></h5></span>
-        <span><b>Tags: </b></span>
+        <a href="{{ path('show_user_review', {id: review.id}) }}" class="btn btn-warning pull-right">{{ 'user.review.user_reviews.more' | trans}}</a>
+        <span><h5><b>{{ 'user.review.user_reviews.author.assessment' | trans}}: {{ review.assessment }}</b> || <b>{{ 'user.review.user_reviews.rating' | trans}}: ?</b> || <b>{{ 'user.review.user_reviews.likes' | trans}}:</b></h5></span>
+        <span><b>{{ 'user.review.user_reviews.tags' | trans}}: </b></span>
         <hr>
         <hr>
         <br>
@@ -25,7 +25,7 @@
         <div class="margin-8"></div>
     {% else %}
         <tr>
-            <td colspan="6">You have not records yet.</td>
+            <td colspan="6">{{ 'user.review.user_reviews.you.have.not.records.yet' | trans}}</td>
         </tr>
     {% endfor %}
 

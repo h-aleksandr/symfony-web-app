@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}{{ 'security.title' | trans }}!{% endblock %}
 
 {% block body %}
     <div class="form-login">
@@ -11,16 +11,16 @@
 
             {% if app.user %}
                 <div class="mb-3">
-                    You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                    {{ ' secerity.you.are.logged' | trans}} {{ app.user.username }}, <a href="{{ path('app_logout') }}">{{ 'security.you.are.logged.logout' | trans }}</a>
                 </div>
             {% endif %}
 
-            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+            <h1 class="h3 mb-3 font-weight-normal">{{ 'security.please.sign.in' | trans }}</h1>
 
             <label for="inputEmail">Email</label>
             <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
             <hr>
-            <label for="inputPassword">Password</label>
+            <label for="inputPassword">{{ 'security.password' | trans }}</label>
             <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
             <hr>
             <input type="hidden" name="_csrf_token"
@@ -38,12 +38,12 @@
             #}
 
             <button class="btn btn-lg btn-primary" type="submit">
-                Sign in
+                {{ 'security.sign.in' | trans }}
             </button>
         </form>
 
         <br><hr><br>
-        <button class="btn btn-social btn-dark"><a href="{{ path('connect_google_start') }}">Login with GOOGLE</a></button><br>
-        <button class="btn btn-social btn-dark"><a href="{{ path('connect_facebook_start') }}">Login with FACEBOOK</a></button><br>
+        <button class="btn btn-social btn-dark"><a href="{{ path('connect_google_start') }}">{{ 'security.login.with.google' | trans }}</a></button><br>
+        <button class="btn btn-social btn-dark"><a href="{{ path('connect_facebook_start') }}">{{ 'security.login.with.facebook' | trans }}</a></button><br>
     </div>
 {% endblock %}

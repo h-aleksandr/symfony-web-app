@@ -3,10 +3,10 @@
 {% block title %}{{ app.user.userIdentifier }}{% endblock %}
 
 {% block body %}
-    <a href="{{ path('user_reviews') }}" class="btn btn-block btn-success">My reviews</a>
+    <a href="{{ path('user_reviews') }}" class="btn btn-block btn-success">{{ 'user.index.my.reviews' | trans }}</a>
         <div class="margin-8"></div>
     <div class="margin-8"></div>
-    <a href="{{ path('comment_index') }}" class="btn btn-block btn-success">My comments</a>
+    <a href="{{ path('comment_index') }}" class="btn btn-block btn-success">{{ 'user.index.my.comments' | trans }}</a>
         <div class="margin-8"></div>
-    <a href="{{ path('review_create') }}" class="btn btn btn-primary">Create a new review</a>
+    <a href="{{ path('review_create') }}" class="btn btn btn-primary">{{ 'user.index.create.new.review' | trans }}</a>
 {% endblock %}

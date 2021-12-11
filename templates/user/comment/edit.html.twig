@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
-{% block title %} Edit {% endblock %}
+{% block title %} {{ 'user.comment.edit.title' | trans}} {% endblock %}
 {% block body %}
-    <a href="{{ path('comment_index') }}"><<< back to list</a>
+    <a href="{{ path('comment_index') }}"><<< {{ 'user.comment.edit.back.to.list' | trans }}</a><hr><br><br>
     {{ form_errors(form) }}
     {{ form(form) }}
-    <a href="{{ path('comment_delete', { id: comment.id }) }}" class="btn btn-block btn-danger">Delete</a>
+    <a href="{{ path('comment_delete', { id: comment.id }) }}" class="btn btn-block btn-danger">{{ 'user.comment.edit.delete' | trans }}</a>
 
 {% endblock %}

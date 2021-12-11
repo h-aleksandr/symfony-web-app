@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Categories{% endblock %}
+{% block title %}{{ 'category.index.title' | trans }}{% endblock %}
 
 {% block body %}
     <div class="form-control-plaintext text-center">
-        <h1><b> CATEGORIES </b></h1>
+        <h1><b> {{ 'category.index.header' | trans}} </b></h1>
     </div><hr><hr>
     <div class="margin-8"></div>
     {% for category in categories %}

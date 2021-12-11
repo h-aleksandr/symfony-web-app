@@ -37,7 +37,7 @@ final class Version20211206172338 extends AbstractMigration
         $this->addSql('COMMENT ON COLUMN review.create_at IS \'(DC2Type:datetime_immutable)\'');
         $this->addSql('COMMENT ON COLUMN review.update_at IS \'(DC2Type:datetime_immutable)\'');
         $this->addSql('CREATE TABLE tag (id INT NOT NULL, name VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
-        $this->addSql('CREATE TABLE tag_review (tag_id INT NOT NULL, review_id INT NOT NULL, PRIMARY KEY(tag_id, review_id))');
+        $this->addSql('CREATE TABLE tag_review (id INT NOT NULL, review_id INT NOT NULL, PRIMARY KEY(tag_id, review_id))');
         $this->addSql('CREATE INDEX IDX_9002C8EABAD26311 ON tag_review (tag_id)');
         $this->addSql('CREATE INDEX IDX_9002C8EA3E2E969B ON tag_review (review_id)');
         $this->addSql('CREATE TABLE "user" (user_pkey INT NOT NULL, email VARCHAR(180) NOT NULL, roles JSON NOT NULL, password VARCHAR(255) DEFAULT NULL, is_verified BOOLEAN NOT NULL, username VARCHAR(255) NOT NULL, PRIMARY KEY(id))');

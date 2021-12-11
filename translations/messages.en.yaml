@@ -1,12 +1,107 @@
-symfony:
-  is:
-    # id is symfony.is.great
-    great: Symfony is great
-    # id is symfony.is.amazing
-    amazing: Symfony is amazing
-  has:
-    # id is symfony.has.bundles
-    bundles: Symfony has bundles
+#symfony:
+#  is:
+#    # id is symfony.is.great
+#    great: Symfony великолепен
+#    # id is symfony.is.amazing
+#    amazing: Symfony потрясающий
+#  has:
+#    # id is symfony.has.bundles
+#    bundles: У Symfony есть пакеты
+#user:
+#  # id is user.login
+#  login: Авторизоваться
+
+header:
+  logo: SYMFONY-WEB-APP
+  all.reviews: ALL REVIEWS
+  categories: CATEGORIES
+  admin.panel: Admin dashboard
+
+panel:
+  auth.login: Login
+  auth.register: Register
+  auth.my.page: My page
+  auth.logout: Logout
+  search: Search
+  tags: Tags
+  rating: Rating
+
+home.welcome: WELCOME TO MY SYMFONY-WEB-APP
+
+category:
+  index:
+    title: Categories
+    header: CATEGORIES
+  show:
+    back.to.list: back to list
+
+registration:
+  title: Register
+  header: REGISTER
+
+security:
+  title: Log in
+  you.are.logged: You are logged in as
+  you.are.logged.logout: Logout
+  please.sign.in: Please sign in
+  password: Password
+  sign.in: Sign in
+  login.with.google: Login with GOOGLE
+  login.with.facebook: Login with FACEBOOK
+
+review:
+  index:
+    title: Reviews
+    header: REVIEWS
+    button.more: More
+    there.are.not.records.yet: There are not records yet.
+  show:
+    no.comments: No comments have been posted yet for this review.
+
 user:
-  # id is user.login
-  login: Login
+  index:
+    my.reviews: My reviews
+    my.comments: My comments
+    create.new.review: Create a new review
+  comment:
+    index:
+      title: My comments
+      header: MY COMMENTS
+      comment.for.review: Comment for review
+      from.author: from author
+      date: Date
+      edit: Edit
+      no.records.found: No records found.
+    edit:
+      title: Edit comment
+      back.to.list: back to list
+      delete: Delete
+    new:
+      title: New comment
+      create.new.comment: Create new comment
+      back.to.list: back to list
+  review:
+    user_reviews:
+      title: My reviews
+      header: MY REVIEWS
+      create.new.review: Create new review
+      author.assessment: Author's assessment
+      rating: Rating
+      likes: Likes
+      tags: Tags
+      more: More
+      you.have.not.records.yet: You have not records yet.
+    show.user.review:
+      back.to.list: back to list
+      author: Author
+      category: Category
+      author.assessment: Author's assessment
+      rating: Rating
+      likes: Likes
+      tags: Tags
+      edit: Edit
+    form:
+      back.to.list: back to list
+    edit.form:
+      back.to.list: back to list
+      delete: Delete

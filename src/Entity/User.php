@@ -24,7 +24,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private int $user_pkey;
+    private int $id;
 
     /**
      * @ORM\Column(type="string", length=180)
@@ -38,18 +38,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @var string The hashed password
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="string", nullable=false)
      */
     private string $password;
 
     /**
-     * @ORM\Column(type="boolean")
-     */
-    private bool $isVerified = false;
-
-
-    /**
-     * @ORM\OneToMany(targetEntity=Review::class, mappedBy="user")
+     * @ORM\OneToMany(targetEntity=Review::class, mappedBy="user", orphanRemoval=true)
      */
     private $review;
 
@@ -71,7 +65,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getId(): int
     {
-        return $this->user_pkey;
+        return $this->id;
     }
 
     public function getEmail(): ?string
@@ -156,11 +150,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
-    }
-
-    public function isVerified(): bool
-    {
-        return $this->isVerified;
     }
 
     public function setIsVerified(bool $isVerified): self

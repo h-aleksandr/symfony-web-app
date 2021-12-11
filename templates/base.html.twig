@@ -23,14 +23,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand active" href="{{ path('home') }}">SYMFONY-WEB-APP</a>
+                    <a class="navbar-brand active" href="{{ path('home') }}">{{ 'header.logo' |trans }}</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="{{ path('review_index') }}">ALL REVIEWS</a></li>
-                        <li><a href="{{ path('categories') }}">CATEGORIES</a></li>
+                        <li><a href="{{ path('review_index') }}">{{ 'header.all.reviews' | trans }}</a></li>
+                        <li><a href="{{ path('categories') }}">{{ 'header.categories' | trans }}</a></li>
 {#                        <li class="dropdown">#}
 {#                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>#}
 {#                            <ul class="dropdown-menu" role="menu">#}
@@ -62,7 +62,7 @@
                     </div>
                     <ul class="nav navbar-nav navbar-right">
                         {% if is_granted('ROLE_ADMIN') %}
-                        <span><a href="{{ path('admin') }}">Admin panel </a> </span>
+                        <span><a href="{{ path('admin') }}">{{ 'header.admin.panel' | trans }}</a> </span>
                         {% endif %}
                         {% if is_granted('ROLE_USER') %}
                         <span>{{ app.user.email }}</span>
@@ -104,17 +104,17 @@
                         <div class="panel panel-info">
                             <div class="panel-body">
                                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                                    <a href="{{ path('user') }}" class="btn btn-block btn-primary"><b><p>{{ app.user.username }}</p><p>My page</p></b><span></span></a>
-                                    <a href="{{ path('app_logout') }}"  class="btn btn-block btn-primary"><b>Logout</b> <span class="caret"></span></a>
+                                    <a href="{{ path('user') }}" class="btn btn-block btn-primary"><b><p>{{ app.user.username }}</p><p>{{ 'panel.auth.my.page' | trans }}</p></b><span></span></a>
+                                    <a href="{{ path('app_logout') }}"  class="btn btn-block btn-primary"><b>{{ 'panel.auth.logout' | trans }}</b> <span class="caret"></span></a>
                                 {% else %}
-                                    <a href="{{ path('app_login') }}" class="btn btn-block btn-primary"><b>Login</b><span class="caret"></span></a>
-                                    <a href="{{ path('app_register') }}" class="btn btn-block btn-primary"><b>Register</b><span class="caret"></span> </a>
+                                    <a href="{{ path('app_login') }}" class="btn btn-block btn-primary"><b>{{ 'panel.auth.login' | trans }}</b><span class="caret"></span></a>
+                                    <a href="{{ path('app_register') }}" class="btn btn-block btn-primary"><b>{{ 'panel.auth.register' | trans }}</b><span class="caret"></span> </a>
                                 {% endif %}
                             </div>
                         </div>
 
                         <div class="panel panel-info hidden-xs">
-                            <div class="panel-heading"><div class="sidebar-header"><h3>Search</h3></div></div>
+                            <div class="panel-heading"><div class="sidebar-header"><h3>{{ 'panel.search' | trans }}</h3></div></div>
                             <div class="panel-body">
                                 <form role="search">
                                     <div class="form-group">
@@ -131,14 +131,14 @@
 
 
                         <div class="panel panel-info">
-                            <div class="panel-heading"><div class="sidebar-header"><h3>Tags</h3></div></div>
+                            <div class="panel-heading"><div class="sidebar-header"><h3>{{ 'panel.tags' | trans }}</h3></div></div>
                             <div class="panel-body">
                                 <div class="">#example #example #example #example #example</div>
                             </div>
                         </div>
 
                         <div class="panel panel-info">
-                            <div class="panel-heading"><div class="sidebar-header"><h3>Top rating</h3></div></div>
+                            <div class="panel-heading"><div class="sidebar-header"><h3>{{ 'panel.rating' | trans }}</h3></div></div>
                             <div class="panel-body">
                                 <ul class="list-group">
                                     <li class="list-group-item list-group-warning">

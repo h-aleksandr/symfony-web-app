@@ -2,9 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d4bf79a-4acd-42c0-8ce6-19df74d009f5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/migrations/Version20211206172338.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20211206172338.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/DashboardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RegistrationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Review.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Review.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/category/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/category/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/category/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/category/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/registration/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/register.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/review/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/review/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/review/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/review/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/login.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/comment/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/comment/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/comment/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/comment/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/comment/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/comment/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/review/edit_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/review/edit_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/review/form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/review/form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/review/show_user_review.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/review/show_user_review.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/review/user_reviews.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/review/user_reviews.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/translations/messages.en.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/translations/messages.en.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/translations/messages.ru.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/translations/messages.ru.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,6 +226,11 @@
       <path value="$PROJECT_DIR$/vendor/league/oauth2-facebook" />
       <path value="$PROJECT_DIR$/vendor/league/oauth2-linkedin" />
       <path value="$PROJECT_DIR$/vendor/symfony/loco-translation-provider" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/doctrine-behaviors" />
+      <path value="$PROJECT_DIR$/vendor/nette/utils" />
+      <path value="$PROJECT_DIR$/vendor/ramsey/uuid" />
+      <path value="$PROJECT_DIR$/vendor/ramsey/collection" />
+      <path value="$PROJECT_DIR$/vendor/brick/math" />
     </include_path>
   </component>
   <component name="ProjectId" id="20mXMC6VxzdahNb2j65nlMjpmPZ" />
@@ -285,7 +315,11 @@
       <workItem from="1638646885578" duration="1353000" />
       <workItem from="1638707922911" duration="7081000" />
       <workItem from="1638717666830" duration="5309000" />
-      <workItem from="1638791295901" duration="17660000" />
+      <workItem from="1638791295901" duration="21217000" />
+      <workItem from="1638872650297" duration="2169000" />
+      <workItem from="1638979206081" duration="12466000" />
+      <workItem from="1639135077134" duration="6445000" />
+      <workItem from="1639208189218" duration="616000" />
     </task>
     <servers />
   </component>

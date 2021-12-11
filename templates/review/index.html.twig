@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ title }}{% endblock %}
+{% block title %}{{ 'review.index.title' | trans }}{% endblock %}
 
 {% block body %}
     <div class="form-control-plaintext text-center">
-        <h1><b>{{ title | upper }}</b></h1>
+        <h1><b>{{ 'review.index.header' | trans }}</b></h1>
     </div>
 
     <div class="margin-8"></div>
@@ -18,13 +18,13 @@
         <hr>
         <span><h5><b>Author's assessment: {{ review.assessment }}</b> || <b>Rating: ?</b> || <b>Like</b></h5></span>
         <span><b>Tags: </b></span>
-        <a href="{{ path('review', {id: review.id}) }}" class="btn btn-warning pull-right">More</a>
+        <a href="{{ path('review', {id: review.id}) }}" class="btn btn-warning pull-right">{{ 'review.index.button.more' | trans }}</a>
         <br><br><hr><hr><br><br>
 
         <div class="margin-8"></div>
     {% else %}
         <tr>
-            <td colspan="6">There are not records yet.</td>
+            <td colspan="6">{{ 'there.are.not.records.yet' | trans}}</td>
         </tr>
     {% endfor %}
 

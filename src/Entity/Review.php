@@ -55,7 +55,7 @@ class Review
     private \DateTimeImmutable $update_at;
 
     /**
-     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="review")
+     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="review", orphanRemoval=true)
      */
     private $comments;
 
@@ -68,7 +68,7 @@ class Review
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="user")
      * @ORM\JoinColumn(referencedColumnName="id")
      */
-    private User $user;
+    private ?User $user;
 
     /**
      * @ORM\ManyToMany(targetEntity=Tag::class, mappedBy="review")
@@ -124,7 +124,7 @@ class Review
         return $this;
     }
 
-    public function getUser()
+    public function getUser(): ?User
     {
         return $this->user;
     }

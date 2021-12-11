@@ -3,8 +3,9 @@
 {% block title %}{{ review.title }}{% endblock %}
 
 {% block body %}
+    <a href="{{ path('user_reviews') }}"><<< {{ 'user.review.edit.form.back.to.list' | trans }}</a><hr><br><br>
     {{ form_errors(form) }}
     {{ form(form) }}
 {#            <a href="{{ path('review_update', { id: review.id }) }}" class="btn btn-block btn-success">Save</a>#}
-            <a href="{{ path('review_delete', { id: review.id }) }}" class="btn btn-block btn-danger">Delete</a>
+            <a href="{{ path('review_delete', { id: review.id }) }}" class="btn btn-block btn-danger">{{ 'user.review.edit.form.delete' | trans }}</a>
 {% endblock %}

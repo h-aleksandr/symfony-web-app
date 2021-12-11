@@ -1,12 +1,108 @@
-symfony:
-  is:
-    # id is symfony.is.great
-    great: Symfony великолепен
-    # id is symfony.is.amazing
-    amazing: Symfony потрясающий
-  has:
-    # id is symfony.has.bundles
-    bundles: У Symfony есть пакеты
+#symfony:
+#  is:
+#    # id is symfony.is.great
+#    great: Symfony великолепен
+#    # id is symfony.is.amazing
+#    amazing: Symfony потрясающий
+#  has:
+#    # id is symfony.has.bundles
+#    bundles: У Symfony есть пакеты
+#user:
+#  # id is user.login
+#  login: Авторизоваться
+
+header:
+  logo: СИМФОНИ-ВЕБ-ПРИЛЛ:)
+  all.reviews: ВСЕ ОБЗОРЫ
+  categories: КАТЕГОРИИ
+  admin.panel: Админ-панель
+
+panel:
+  auth.login: Вход
+  auth.register: Регистрация
+  auth.my.page: Моя страница
+  auth.logout: Выход
+  search: Поиск
+  tags: Тэги
+  rating: Рейтинг
+
+home.welcome: ДОБРО ПОЖАЛОВАТЬ В МОЁ СИМФОНИ-ВЕБ-ПРИЛОЖЕНЬИЦЕ
+
+category:
+  index:
+    title: Категории
+    header: КАТЕГОРИИ
+  show:
+    back.to.list: назад к списку
+
+registration:
+  title: Регистрация
+  header: РЕГИСТРАЦИЯ
+
+security:
+  title: Войти
+  you.are.logged: Вы уже вошли как
+  you.are.logged.logout: Выйти
+  please.sign.in: Пожалуйста, войдите
+  password: Пароль
+  sign.in: Вход
+  login.with.google: Войти через GOOGLE
+  login.with.facebook: Войти через FACEBOOK
+
+review:
+  index:
+    title: Обзоры
+    header: ОБЗОРЫ
+    button.more: Больше
+    there.are.not.records.yet: Здесь пока нет никаких записей.
+
+  show:
+    no.comments: К этому обзору еще не было опубликовано никаких комментариев.
+
 user:
-  # id is user.login
-  login: Авторизоваться
+  index:
+    my.reviews: Мои обзоры
+    my.comments: Мои комментарии
+    create.new.review: Создать новый обзор
+  comment:
+    index:
+      title: Мои комментарии
+      header: МОИ КОММЕНТАРИИ
+      comment.for.review: Комментарий к обзору
+      from.author: автора
+      date: Дата
+      edit: Редактировать
+      no.records.found: Записей не найдено.
+    edit:
+      title: Редактировать комментарий
+      back.to.list: назад к списку
+      delete: Удалить
+    new:
+      title: Новый комментарий
+      create.new.comment: Создать новый комментарий
+      back.to.list: назад к списку
+  review:
+    user_reviews:
+      title: Мои обзоры
+      header: МОИ ОБЗОРЫ
+      create.new.review: Создать новый обзор
+      author.assessment: Оценка автора
+      rating: Рейтинг
+      likes: Понравилось
+      tags: Тэги
+      more: Больше
+      you.have.not.records.yet: Здесь пока нет никаких записей.
+    show.user.review:
+      back.to.list: назад к списку
+      author: Автор
+      category: Категория
+      author.assessment: Оценка автора
+      rating: Рейтинг
+      likes: Понравилось
+      tags: Тэги
+      edit: Редактировать
+    form:
+      back.to.list: назад к списку
+    edit.form:
+      back.to.list: назад к списку
+      delete: Уалить
